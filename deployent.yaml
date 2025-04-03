@@ -1,0 +1,61 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: deployment-1
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       name: busybox-pod
+#   template:
+#     metadata:
+#       labels:
+#         name: busybox-pod
+#     spec:
+#       containers:
+#       - name: busybox-container
+#         image: busybox
+#         command:
+#         - sh
+#         - "-c"
+#         - echo Hello Kubernetes! && sleep 3600
+# ---
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: httpd-frontend
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: httpd-frontend
+#   template:
+#     metadata:
+#       name: httpd-frontend
+#       labels:
+#         app: httpd-frontend
+#     spec:
+#       containers:
+#       - name: httpd-frontend
+#         image: httpd:2.4-alpine
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-deployment
+  template:
+    metadata:
+      name: my-deployment
+      labels:
+        app: my-deployment
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx

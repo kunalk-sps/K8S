@@ -1,0 +1,17 @@
+apiVersion: v1 #string
+kind: Pod #string
+metadata:
+  name: nginx-pod #string
+  labels: #dictionary
+    app: my-app
+    # type: test-container
+    type: front-end
+  # namespace: dev # create pod in dev namespace
+spec:
+  containers: # Array/list
+    - name: nginx-container
+      image: nginx
+# top level properties
+# apiVersion, kind, metadata, spec
+
+

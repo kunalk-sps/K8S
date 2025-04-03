@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replicaset
+  labels:
+    apps: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: my-app
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 10
+  selector:
+    matchLabels:
+      type: front-end # if a pod already exists with same type it will not create new pods
+---
+apiVersion: v1
+kind: deployment
+metadata:
+  name: deployment-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - name: busybox-container
+        image: busybox
+        command:
+        - sh
+        - "-c"
+        - echo Hello Kubernetes! && sleep 3600
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-rs
+  labels:
+    type: front-end
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      type: front-end
+  template:
+    metadata:
+      name: my-rs
+      labels:
+        type: front-end
+    spec:
+      containers:
+        - name: mginx-container
+          image: nginx
