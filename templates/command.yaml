@@ -1,0 +1,16 @@
+piVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper-2
+spec:
+  containers:
+    - name: ubuntu
+      image: ubuntu
+      # command:
+      #   - sleep
+      #   - "5000"
+      # args: ["--color", "green"]
+
+      # command: ["sleep", "5000"]
+      command: ["sleep"]
+      args: ["5000"]

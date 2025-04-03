@@ -5,7 +5,6 @@ FROM ubuntu
 
 # ENTRYPOINT [ "sleep" ]
 
-
 ENTRYPOINT [ "sleep" ]
-CMD [ "15" ]
+CMD [ "55" ]
 

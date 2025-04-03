@@ -136,3 +136,37 @@ docker run ubuntu_sleep 3
 
 # change entrypoint on runtime
 docker run --entrypoint sleep ubuntu_sleep 3
+
+### command = Entrypoint in K8S
+### args = CMD in k8s
+
+# Edit a pod
+kubectl edit pod <pod name>
+
+# Get definition of existing pod in a file
+kubectl get pod webapp -o yaml > my-new-pod.yaml
+
+# force update the pod definition
+kubectl replace --force -f /path to file
+
+# pass args to cntainer after --
+kubectl run nginx --image nginx -- sleep 4
+kubectl run nginx --image nginx --dry-run=client -o yaml -- sleep 4
+
+# pass command to container
+kubectl run nginx --image nginx -- sleep 4
+kubectl run nginx --image nginx --dry-run=client -o yaml --command sleep -- 4
+
+
+
+### congig Map
+
+# get configMap
+kubectl get configmap
+kubectl get cm
+
+# create config map from imerative commands
+kubectl create configmap my-config --from-literal=ENV=dev --from-literal=PORT=1000
+
+# describe configmap
+kubectl get cm my-config-new -o json
