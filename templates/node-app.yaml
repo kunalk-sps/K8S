@@ -18,11 +18,16 @@ spec:
       #       name: node-config
 
       # Use both in one
-      # env:
-      #   - name: NODE_ENV
-      #     value: deploy
-      #   - name: PORT
-      #     valueFrom:
-      #       configMapKeyRef:
-      #         name: node-config
-      #         key: PORT
+      env:
+        - name: NODE_ENV
+          value: deploy
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: node-config
+              key: PORT
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: node-config
+              key: NODE_ENV

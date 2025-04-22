@@ -1,6 +1,9 @@
 # Use an official Node.js runtime as a parent image
 FROM node:18-alpine
 
+# Set environment variable
+ENV NODE_ENV=development-dockern
+
 # Set working directory in the container
 WORKDIR /app
 

@@ -131,8 +131,8 @@ docker run ubuntu_sleep 10
 # If we want to add default value to the entrypoint
 # ENTRYPOINT [ "sleep" ]
 # CMD [ "15" ]
-docker run ubuntu_sleep
-docker run ubuntu_sleep 3
+docker run ubuntu_sleep # sleep 15
+docker run ubuntu_sleep 3 # sleep 3
 
 # change entrypoint on runtime
 docker run --entrypoint sleep ubuntu_sleep 3
@@ -170,3 +170,20 @@ kubectl create configmap my-config --from-literal=ENV=dev --from-literal=PORT=10
 
 # describe configmap
 kubectl get cm my-config-new -o json
+
+# print env from pod
+kubectl exec node-app-pod -- printenv
+
+### Sectets
+
+# create secrets
+kubectl create secret generic test-secret --from-literal=HOST=test.com
+
+# get secrets
+kubectl get secrets
+
+# Encode Value
+echo -n 'DB_HOST' | base64
+
+# Decode Value
+echo -n 'REJfSE9TVA==' | base64 --decode
