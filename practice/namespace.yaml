@@ -1,0 +1,29 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+---
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: my-dev-ns-deployment
+  namespace: dev
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: nginx
+  template:
+    metadata:
+      name: my-ns-template
+      labels:
+        type: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx

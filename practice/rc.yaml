@@ -1,0 +1,45 @@
+# replicatio controller
+
+apiVersion: v1
+kind: ReplicationController
+metadata: # Replicaton Controller
+  name: myapp-rc
+  labels:
+    type: nginx-server
+    app: test
+spec: # Replication controller
+  replicas: 5
+  selector:
+    type: nginx-server
+    app: test
+  template:
+    metadata: # Template
+      name: my-rc-template
+      labels:
+        type: nginx-server
+        app: test
+    spec: # Pod
+      containers:
+        - name: nginx-container
+          image: nginx
+
+---
+
+ # Works on older versions (Sometimes works)
+
+# apiVersion: v1
+# kind: ReplicationController
+# metadata:
+#   name: myapp-rc
+# spec:
+#   template:
+#     metadata:
+#       name: nginx-pod
+#       labels:
+#         app: my-app
+#         type: test-container
+#     spec:
+#       containers:
+#         - name: nginx-container
+#           image: nginx
+#   replicas: 5

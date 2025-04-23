@@ -1,0 +1,25 @@
+# Replica Set
+
+apiVersion: apps/v1
+
+kind: ReplicaSet
+
+metadata: # Replica Set
+  name: my-replicaset
+  labels:
+    tier: nginx
+
+spec: # Replica Set
+  replicas: 11
+  selector:
+    matchLabels:
+      tier: nginx
+  template:
+    metadata: # pod
+      name: my-rc-pod
+      labels:
+        tier: nginx
+    spec: # Pod
+      containers:
+        - name: nginx-container
+          image: nginx

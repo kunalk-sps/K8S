@@ -1,5 +1,14 @@
-# create pod
+# create object in k8s using file defination
 kubectl create -f filename.yaml
+
+# replace existing object
+kubectl replace -f filename.yaml
+
+# Explain Object
+kubectl explain rs
+
+# get all objects
+kubectl get all
 
 # get pods
 kubectl get pods
@@ -110,12 +119,29 @@ kubectl run redis --image=redis:alpine --labels=tier=db
 
 kubectl expose pod redis --port=6379 --name redis-service
 kubectl create deployment webapp --image=kodekloud/webapp-color --replicas=3
+kubectl create deployment httpd-frontend --replicas=3 --image=httpd:2.4-alpine
 kubectl run custom-nginx --image=nginx --port=8080
 kubectl create deployment redis-deploy --image=nginx --namespace=dev-ns --replicas=2
 kubectl run httpd --image=httpd:alpine --port=80 --expose
 kubectl run httpd --image=httpd:alpine --port=80 --expose
 
+# resource Quota
 
+# get all resourcequota
+kubectl get resourcequota
+
+# Create a new resource quota named my-quota
+kubectl create quota my-quota --hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10
+
+# Service
+
+# Expose redis pod
+kubectl run custom-nginx --image nginx --port 8080
+kubectl expose pod redis --port 6379 --name redis-service
+kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml
+kubectl run httpd --image httpd:alpine --port 80 --expose
+
+# https://www.udemy.com/course/certified-kubernetes-application-developer/learn/lecture/14112621#overview
 
 #### Docker
 
