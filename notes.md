@@ -8,3 +8,6 @@
 
 
 [Expose Service Port](https://www.udemy.com/course/certified-kubernetes-application-developer/learn/lecture/14112621#overview)
+
+
+## docker history <ImageName>

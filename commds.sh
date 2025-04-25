@@ -213,3 +213,9 @@ echo -n 'DB_HOST' | base64
 
 # Decode Value
 echo -n 'REJfSE9TVA==' | base64 --decode
+
+# Image layers history
+docker history my-node-app
+
+# check base image
+docker run python:3.6 cat /etc/*release*
